@@ -12,7 +12,7 @@
         public function __set($attr, $value) {
             $this->$attr = $value;
         }
-
+         
         private function executarMania() {
             echo 'Assobiar';
         }
@@ -30,10 +30,27 @@
                 $this->executarMania();
             }
         }
-
-      
     }
 
+    class Filho extends Pai{
+        public function __construct() {
+            //exibir os métodos do objeto
+            echo '<pre>';
+            print_r(get_class_methods($this) );
+            echo '</pre>';
+        }
+        private function executarMania() {
+            echo 'Cantar';
+        }
+        public function x() {
+            $this->executarMania();
+        }
+        protected function responder() {
+            echo 'Olá';
+        }
+    }
+
+    /*
     $pai = new Pai();
     //echo $pai->humor; 
     echo $pai->sobrenome;
@@ -41,4 +58,16 @@
     echo $pai->sobrenome = 'Da Silva';
     echo '<br>';
     $pai->executarAcao();
+    */
+
+    $filho = new Filho();
+    echo '<pre>';
+    print_r($filho); 
+    echo '</pre>';
+
+    $filho->executarAcao();
+    echo '<br>';
+    $filho->x();
+      
+    
 ?>
